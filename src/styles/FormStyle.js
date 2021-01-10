@@ -1,6 +1,8 @@
+// import pho from "../image/app.jpg";
 const styles = theme => ({
 
     main: {
+        // imgSrc: `url(${pho})`,
         width:"auto",
         display: "block" ,
         marginLeft: theme.spacing.unit * 3,
@@ -8,7 +10,7 @@ const styles = theme => ({
         [theme.breakpoints.up("sm")] : {
             width: 400,
             marginLeft: "auto" ,
-            marginRight: "auto",
+            marginRight: "45px",
         }
     },
     paper: {
@@ -23,13 +25,12 @@ const styles = theme => ({
         backgroundColor: theme.palette.secondary.main
     },
     form:{
-        // display: "flex",
-        // justifyContent: "flexStart",
         width: "100%", 
         marginTop: theme.spacing.unit * 3
     },
     submit:{
         marginTop: theme.spacing.unit * 3,
     }
+   
 })
 export default styles;

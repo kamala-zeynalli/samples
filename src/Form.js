@@ -1,7 +1,6 @@
  import React, {Component} from 'react' ;
  import Avatar from '@material-ui/core/Avatar' ;
  import Button from '@material-ui/core/Button' ;
- import CssBaseline from '@material-ui/core/CssBaseline' ;
  import FormControl from '@material-ui/core/FormControl' ;
  import FormControlLabel from '@material-ui/core/FormControlLabel' ;
  import Checkbox from '@material-ui/core/Checkbox' ;
@@ -19,25 +18,35 @@
  const words = {
      azerbaijan : {
          email:"E-mail ünvanı",
-         password: "şifrə" , 
+         password: "Şifrə" , 
          rememberMe : "Yadda saxla" ,
-         signIn: "Daxil ol"
+         signIn: "Daxil ol",
+         question:"Hesabınız yoxdur? Qeydiyyatdan keçin"
      },
      english :{
         email:"Email Address ",
         password: "Password" , 
         rememberMe : "Remember Me ",
-        signIn: "Sign In"
-     }
- };
-class Form extends Component{
-     static contextType = LanguageContext;
+        signIn: "Sign In",
+        question:"Don't have an account? Register now"
+     },
+     
+      русский:{
+       email: "Е-почты Адрес ",
+       password: "Пароль" , 
+        rememberMe : "Запомнить меня ",
+        signIn: "Войти",
+        question:"Нет учетной записи? Зарегистрироваться "
+}
 
+ };
+       class Form extends Component { 
+     static contextType = LanguageContext;
 
      render() {
          const {language, changeLanguage} = this.context;
-         const {classes} =this.props;
-         const {email, password, rememberMe, signIn} = words[language];
+         const {classes} = this.props;
+         const {email, password, rememberMe, signIn, question} = words[language];
          return(
             <main className={classes.main} >
                 <Paper className={classes.paper}>
@@ -48,8 +57,10 @@ class Form extends Component{
                   <Select value={language} onChange={changeLanguage}> 
                      <MenuItem value="azerbaijan">Azerbaijan</MenuItem>
                      <MenuItem value="english">English</MenuItem>
-                 
+                     <MenuItem value="русский">Русский</MenuItem>
                   </Select >
+                  {/* <img src={img} */}
+
                   <form classes={classes.form}>
                   <FormControl margin="normal" required fullWidth>
                  <InputLabel htmlFor="email">{email}</InputLabel>
@@ -61,10 +72,13 @@ class Form extends Component{
                   
                   </FormControl>
                   <FormControlLabel control={<Checkbox color="primary"/>}  label={rememberMe}  />
-                  <Button type="submit" variant="contained" fullWidth color="primary" className={classes.submit} >{signIn}</Button>
+                  <Button  type="submit" variant="contained" fullWidth color="primary" className={classes.submit} >{signIn}</Button>
+                   <small className="small">{question}</small>
                   </form>
                 </Paper>
+
             </main>
+            
          )
      }
  }
